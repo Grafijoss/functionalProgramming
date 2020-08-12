@@ -21,7 +21,7 @@ fetch('https://swapi.dev/api/films/1/')
 .then(x => {
 	return new Promise((resolve) => {
 		let promisesChars = []
-	
+
 		x.characters.forEach(char => {
 				const division = char.split("http://swapi.dev/api/people/");
 				const character = Base(`people/${division[1]}`)
@@ -55,10 +55,10 @@ fetch('https://swapi.dev/api/films/1/')
 	
 		response.vehicles.forEach(char => {
 				const division = char.split("http://swapi.dev/api/vehicles/");
-				const character = Base(`vehicles/${division[1]}`)
+				const item = Base(`vehicles/${division[1]}`)
 	
 				const prom = new Promise((childresolve, childreject)=> {
-					character.get().then(y => {
+					item.get().then(y => {
 						childresolve({
 							name: y.name,
 							cargoCapacity: y.cargo_capacity,
@@ -88,10 +88,10 @@ fetch('https://swapi.dev/api/films/1/')
 		let promisesChars = []
 		response.starships.forEach(char => {
 				const division = char.split("http://swapi.dev/api/starships/");
-				const character = Base(`starships/${division[1]}`)
+				const item = Base(`starships/${division[1]}`)
 	
 				const prom = new Promise((childresolve, childreject)=> {
-					character.get().then(y => {
+					item.get().then(y => {
 						childresolve(y)
 					})
 				})
